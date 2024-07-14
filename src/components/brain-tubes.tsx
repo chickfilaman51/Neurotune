@@ -6,7 +6,7 @@ import { shaderMaterial } from '@react-three/drei';
 export const BrainMaterial = shaderMaterial(
   {
     time: 0,
-    color: new THREE.Color(0.1, 0.3, 0.6),
+    color: new THREE.Color(0.5, 0.2, 0.9),
     mouse: new THREE.Vector3(0, 0, 0),
   },
   // vertex shader

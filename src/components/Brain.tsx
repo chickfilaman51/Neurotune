@@ -43,13 +43,17 @@ function BrainScene() {
 
 function Brain() {
   return (
-    <Canvas camera={{ position: [0, 0, 0.19], near: 0.05, far: 5 }}>
-      <color attach="background" args={['rgb(22,14,39)']} />
+    <div className="w-full h-full bg-gradient-to-br from-[#1c0d22] via-[#28124e] to-[#270431]">
+    <Canvas
+      gl={{ alpha: true }}
+      camera={{ position: [0, 0, 0.168], near: 0.05, far: 5 }}
+    >
       <ambientLight />
       <pointLight position={[10, 10, 10]} />
       <BrainScene />
       <OrbitControls />
     </Canvas>
+    </div>
   );
 }
 
