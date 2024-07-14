@@ -1,4 +1,5 @@
-import { Canvas } from '@react-three/fiber';
+import React, { useRef } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
 import { OrbitControls } from '@react-three/drei';
 import * as THREE from 'three';
 import { Tubes } from './brain-tubes.tsx';
@@ -23,17 +24,33 @@ function createBrainCurvesFromPaths(): THREE.CatmullRomCurve3[] {
 
 const curves = createBrainCurvesFromPaths();
 
-function App() {
+function BrainScene() {
+  const brainRef = useRef<THREE.Group>(null);
+
+  useFrame(() => {
+    if (brainRef.current) {
+      brainRef.current.rotation.y += 0.01;
+    }
+  });
+
   return (
-    <Canvas camera={{ position: [0, 0, 0.3], near: 0.001, far: 5 }}>
-      <color attach="background" args={['black']} />
-      <ambientLight />
-      <pointLight position={[10, 10, 10]} />
+    <group ref={brainRef}>
       <Tubes curves={curves} />
       <BrainParticles curves={curves} />
+    </group>
+  );
+}
+
+function Brain() {
+  return (
+    <Canvas camera={{ position: [0, 0, 0.19], near: 0.05, far: 5 }}>
+      <color attach="background" args={['rgb(22,14,39)']} />
+      <ambientLight />
+      <pointLight position={[10, 10, 10]} />
+      <BrainScene />
       <OrbitControls />
     </Canvas>
   );
 }
 
-export default App;
+export default Brain;
