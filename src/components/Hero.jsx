@@ -24,7 +24,7 @@ const Hero = () => {
       <div className="container relative" ref={parallaxRef}>
         <div className="relative z-1 max-w-[62rem] mx-auto text-center mb-[3.875rem] md:mb-20 lg:mb-[6.25rem]">
           <h1 className="h1 mb-6">
-            Curing&nbsp;Aphasia&nbsp;one patient at a time with {` `}
+            Curing&nbsp;Aphasia&nbsp;<span className="text-purple-400">one patient</span> at a time with {` `}
             <span className="inline-block relative">
               Neurotune{" "}
               <img
